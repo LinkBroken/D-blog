@@ -2,17 +2,9 @@
 import Image from "next/image";
 import home from "./assets/images/Homepage.png";
 import Link from "next/link";
-import { isAuthenticated } from "./pages/api/auth/route";
-import { useLayoutEffect } from "react";
-import { redirect } from "next/navigation";
 
 export default function Home() {
-  useLayoutEffect(() => {
-    const isAuth = isAuthenticated;
-    if(!isAuth){
-      redirect("/posts")
-    }
-  }, [])
+
   return (
     <div className="pt-8 flex justify-center gap-4 items-center">
       <div className="flex flex-col gap-4 w-1/2">

@@ -1,9 +1,9 @@
 "use client"
 
-function Button({onClick}) {
+function Button({onClick,className,children}) {
 
   return (
-    <button  onClick={onClick}>Remove Test</button>
+    <button className={className}  onClick={onClick}>{children}</button>
   )
 }
 

@@ -11,12 +11,14 @@ model User {
   id       Int    @id @default(autoincrement())
   username String @unique
   age      Int
+  image    String @unique
   email    String @unique
   posts    Post[] 
 }
 
 model Post {
   id       Int    @id @default(autoincrement())
+  header String @unique
   content  String @unique
   userId   Int
   user     User   @relation(fields: [userId], references: [id])

@@ -1,8 +1,14 @@
+import { PrismaClient } from "@prisma/client";
+import Userdata from "../components/usersData";
+export default async function users(id) {
+  const prisma = new PrismaClient()
+  const usersInfo = await prisma.user.findMany()
 
-function page() {
+  
+  
   return (
-    <div>page</div>
-  )
+    <div className="flex flex-col items-center">
+      <Userdata usersInfo={usersInfo} />
+    </div>
+  );
 }
-
-export default page

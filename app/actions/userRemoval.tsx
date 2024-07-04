@@ -4,14 +4,13 @@ import { revalidatePath } from "next/cache";
 
 const prisma = new PrismaClient()
 
-const removeUser = async (content:string) => {
-  if (prisma) {
-    await prisma.post.delete({
+const removeUser = async (username:string) => {
+    await prisma.user.delete({
       where: {
-        content:content
+        username:username
       }
     })
-  }
+  
   revalidatePath("favorites")
 }
 

@@ -1,7 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 import Form from "../components/Form";
-import { redirect } from "next/navigation";
 
 const prisma = new PrismaClient();
 
@@ -13,15 +12,20 @@ export default function AddPost() {
         const age = parseInt(formData.get("age"));
         const email = formData.get("email");
         const content = formData.get("posts");
+        const image = formData.get("image");
+        const header = formData.get("header");
+
 
        try{ await prisma.user.create({
             data: {
                 username,
                 age,
+                image,
                 email,
                 posts: {
                     create: {
                         content,
+                        header,
                     },
                 },
             },

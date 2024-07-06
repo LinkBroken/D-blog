@@ -46,7 +46,7 @@ export default async function Home() {
         </p>
         <Link
           href="/posts"
-          className="p-4 text-lg border-slate-700 border self-start"
+          className="p-4 text-lg border-slate-700 border shadow-md shadow-black self-start"
         >
           Read More
         </Link>
@@ -57,7 +57,7 @@ export default async function Home() {
     
     </div>
     <div className="flex flex-col gap-8 items-center p-8">
-      <h1 className="text-3xl border-black border-solid ">Topics</h1>
+      <h1 className="text-3xl border-black border p-3 shadow-md shadow-black ">Topics</h1>
       <div className="flex w-screen justify-evenly text-white bg-teal-700 p-6">
       <h1 className="text-3xl ">Tech</h1>
       <h1 className="text-3xl ">Fitness</h1>
@@ -65,10 +65,14 @@ export default async function Home() {
       <h1 className="text-3xl ">Mental Health</h1>
       </div>
     </div>
-    <div className="flex ml-4">
+    <div className="flex flex-col ml-4">
+    <h1 className="text-3xl border-black border p-3 shadow-md shadow-black w-fit self-center ">Examples</h1>
+
     {<Userdata usersInfo={posts}></Userdata>}
     </div>
-    <Link className=" self-center p-4 text-lg border-slate-700 border" href="/add">Add a Post</Link>
+    <div className="flex flex-col items-center">
+    <Link className=" self-center p-4 mb-8 text-lg border-slate-700 border shadow-md shadow-black" href="/add">Add a Post</Link>
+    </div>
     </>
   );
 }

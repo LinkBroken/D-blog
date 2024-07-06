@@ -1,11 +1,26 @@
-"use client"
+// "use client"
 import Image from "next/image";
 import home from "./assets/images/Homepage.png";
 import Link from "next/link";
-import { useState } from "react";
-export default function Home() {
-  const [post, setPost] = useState(false)
+import { PrismaClient } from "@prisma/client";
+import Userdata from "./components/postData";
+
+export default async function Home() {
+  // const [post, setPost] = useState(false)
+  const prisma = new PrismaClient();
+  const posts = await prisma.post.findMany(
+    {
+      where:{
+        id: 1, 
+        
+        
+      }
+      
+    }
+  );
+
   return (
+    <>
     <div className="flex flex-col gap-8">
     <div className="pt-8 flex justify-center gap-4 items-center">
       <div className="flex flex-col gap-4 w-1/2">
@@ -38,8 +53,22 @@ export default function Home() {
       </div>
       <Image src={home} width={400} height={400} alt="description" />
     </div>
-    <Link className=" self-center p-4 text-lg border-slate-700 border" href="/add">Add a Post</Link>
+    
     
     </div>
+    <div className="flex flex-col gap-8 items-center p-8">
+      <h1 className="text-3xl border-black border-solid ">Topics</h1>
+      <div className="flex w-screen justify-evenly text-white bg-teal-700 p-6">
+      <h1 className="text-3xl ">Tech</h1>
+      <h1 className="text-3xl ">Fitness</h1>
+      <h1 className="text-3xl ">Business</h1>
+      <h1 className="text-3xl ">Mental Health</h1>
+      </div>
+    </div>
+    <div className="flex ml-4">
+    {<Userdata usersInfo={posts}></Userdata>}
+    </div>
+    <Link className=" self-center p-4 text-lg border-slate-700 border" href="/add">Add a Post</Link>
+    </>
   );
 }

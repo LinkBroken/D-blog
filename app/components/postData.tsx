@@ -10,11 +10,11 @@ type Prop = {
 
 function Userdata({ usersInfo }: Prop) {
   return (
-    <div className="flex flex-wrap text-wrap gap-x-7 gap-y-40 mb-10  pt-8 mt-8 w-10/12 text-slate-800">
+    <div className="flex flex-wrap text-wrap gap-x-7 gap-y-40 mb-10   pt-8 mt-8 w-10/12 text-slate-800">
       {usersInfo.map((post, index) =>
         post.id ? (
           <div
-            className="flex border border-solid flex-col gap-4 items-center p-7 w-1/4   hover:bg-slate-100 rounded-2xl"
+            className="flex border border-solid flex-col gap-4 items-center p-7 w-1/4 hover:scale-105 hover:bg-slate-100 rounded-2xl bg-white shadow-lg shadow-black"
             key={index}
           >
             <h1>{post.content.substring(0, 200)} .....</h1>

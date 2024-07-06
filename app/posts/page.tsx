@@ -7,7 +7,7 @@ export default async function posts() {
 
   
   return (
-    <div className=" overflow-hidden flex justify-around flex-col  items-center pt-8 ">
+    <div className=" bg-teal-50 overflow-hidden flex justify-around flex-col  items-center pt-8 ">
     <div className=" relative right-1/4  overflow-hidden flex justify-evenly items-center gap-3 ">
       {/* <h1 className=" text-2xl">Posts</h1> */}
       <Image className="rounded-2xl" width={500} height={600} src="https://www.pixibitdesign.com/wp-content/uploads/2018/08/Blog-images-01.png" alt="alt text"></Image>

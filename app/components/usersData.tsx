@@ -18,7 +18,7 @@ function Userdata({ usersInfo }: Prop) {
 
                     <h1 className=" text-xl ">{user.username}</h1>
                     <Image src={user.image} alt="userimage" className=" rounded-lg" width={600} height={500} />
-                    <Button className=" p-2 rounded-xl border border-white" onClick={() => navigateUser(user.id)}>User Info</Button>
+                    <Button className=" rounded-xl border border-black p-3 text-xl self-end shadow-md shadow-black" onClick={() => navigateUser(user.id)}>Info</Button>
 
 
                 </div>

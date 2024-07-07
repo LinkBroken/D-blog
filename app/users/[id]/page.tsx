@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import userData from "@/app/actions/userData";
 import Image from "next/image";
 import Button from "@/app/components/Button";
+import navigate from "@/app/actions/navigate";
 
 export default function Page() {
   const [data, setData] = useState({
@@ -29,9 +30,9 @@ export default function Page() {
 
     , [path.id])
   return (
-    <>
-    <div className="flex flex-col justify-center items-center">
-    <div className="flex flex-col  rounded-2xl mt-10 p-4 gap-4 w-1/6 border border-black shadow-md shadow-black text-slate-900 font-sans hover:scale-105 items-center mb-6">
+    < div className="flex w-screen ">
+    <div className="flex flex-col justify-center items-center w-1/5 pl-8">
+    <div className="flex flex-col  rounded-2xl mt-10 p-4 gap-4  border border-black shadow-md shadow-black text-slate-900 font-sans hover:scale-105 items-center mb-6">
 
 
       <h1 className=" text-2xl">{data.username}</h1>
@@ -40,12 +41,15 @@ export default function Page() {
       <h1 className=" self-start text-xl">Email: {data.email}</h1>
       <h1 className="text-xl self-start">Posts: {data.posts.length}</h1>
     </div>
-
     </div>
+    <div className=" flex flex-col items-center pt-4 gap-4 w-4/5 ">
+    <h1 className="text-2xl p-4 text-center border border-black shadow-md shadow-black w-fit self-center">Posts by {data.username.split(" ")[0]}</h1>
+
+    <div className=" flex pl-6">
     {data.posts.map((post, index) =>
          (
           <div
-            className="flex border border-solid flex-col gap-4 items-center p-7 w-1/4 hover:scale-105 hover:bg-slate-100 rounded-2xl bg-white shadow-lg shadow-black"
+            className="flex border border-solid flex-col gap-4 items-center p-7 w-1/4 hover:scale-105 hover:bg-slate-100 rounded-2xl bg-white shadow-lg shadow-black mb-4"
             key={index}
           >
             <h1>{post.content.substring(0, 200)} .....</h1>
@@ -58,6 +62,8 @@ export default function Page() {
             {/* <Button className="self-center rounded-md hover:bg-red-500 p-3 bg-red-600 text-white" onClick={() => removeUser(post.content)}>Remove</Button> */}
           </div>
         ))}
-    </>
+    </div>
+        </div>
+    </div>
   )
 }

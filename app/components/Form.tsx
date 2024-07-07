@@ -5,14 +5,14 @@ function Form({ action }) {
       <div className="flex flex-col items-center">
         <form
           action={action}
-          className="flex flex-col mt-10 gap-4 w-1/2 ml-5 items-center bg-teal-800 text-white  rounded-xl "
+          className="flex flex-col mt-10 gap-1 w-1/3 ml-5 items-center bg-teal-900 text-white   rounded-xl "
         >
           <div className="flex flex-col w-full items-center gap-2 ">
             <div className="flex w-full justify-evenly">
               <div className="flex flex-col gap-3 items-center w-3/4">
                 <label htmlFor="username">User Name</label>
                 <input
-                  className="text-black border text-2xl border-solid w-3/4 border-black rounded-md text-center"
+                  className="text-black border text-xl border-solid focus:border-none w-3/4 border-black rounded-md text-center"
                   type="text"
                   name="username"
                   required
@@ -21,7 +21,7 @@ function Form({ action }) {
               <div className="flex flex-col gap-3 items-center w-3/4">
                 <label htmlFor="age">Age</label>
                 <input
-                  className="text-black border text-2xl border-solid w-1/6 border-black rounded-md text-center"
+                  className="text-black border text-xl border-solid w-1/6 border-black rounded-md text-center"
                   type="number"
                   name="age"
                   required
@@ -32,7 +32,7 @@ function Form({ action }) {
               <div className="flex flex-col gap-3 items-center  w-3/4">
                 <label htmlFor="image">Insert Image Link</label>
                 <input
-                  className="text-black border border-solid text-2xl w-3/4 border-black rounded-md text-center"
+                  className="text-black border border-solid text-xl w-3/4 border-black rounded-md text-center"
                   type="text"
                   name="image"
                   required
@@ -41,7 +41,7 @@ function Form({ action }) {
               <div className="flex flex-col gap-3 items-center w-3/4">
                 <label htmlFor="email">Email</label>
                 <input
-                  className="text-black border text-2xl border-solid border-black rounded-md text-center w-3/4"
+                  className="text-black border text-xl border-solid border-black rounded-md text-center w-3/4"
                   type="text"
                   name="email"
                   required
@@ -54,7 +54,7 @@ function Form({ action }) {
               Title
             </label>
             <input
-              className="text-black border border-solid text-2xl border-black rounded-md text-center w-3/4"
+              className="text-black border border-solid text-xl border-black rounded-md text-center w-3/4"
               name="header"
               required
             />
@@ -64,14 +64,14 @@ function Form({ action }) {
               Post
             </label>
             <textarea
-              className="text-black border border-solid text-2xl border-black rounded-2xl text-center w-full h-64"
+              className="text-black border border-solid text-xl border-black rounded-2xl text-center w-full h-64"
               name="posts"
               required
             />
           </div>
           <button
             type="submit"
-            className="p-2 mb-3 w-44 rounded-2xl text-white bg-teal-900 hover:bg-teal-700"
+            className="p-2 mb-3 w-44 rounded-2xl text-white bg-teal-900 hover:bg-teal-700 shadow-md shadow-black"
           >
             Add Post
           </button>

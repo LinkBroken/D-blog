@@ -59,7 +59,7 @@ export default async function Home() {
     <div className="flex flex-col gap-8 items-center p-8">
       <h1 className="text-3xl border-black border p-3 shadow-md shadow-black ">Topics</h1>
       <div className="flex w-screen justify-evenly text-white bg-teal-700 p-6">
-      <h1 className="text-3xl ">Tech</h1>
+      <h1 className="text-3xl  ">Tech</h1>
       <h1 className="text-3xl ">Fitness</h1>
       <h1 className="text-3xl ">Business</h1>
       <h1 className="text-3xl ">Mental Health</h1>

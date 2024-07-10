@@ -2,7 +2,7 @@
 "use client"
 import { useParams, usePathname } from "next/navigation";
 import postData from "@/app/actions/postData";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import userData from "@/app/actions/userData";
 import Image from "next/image";
 import Button from "@/app/components/Button";
@@ -23,20 +23,21 @@ export default function Page() {
     async function fetchData() {
       const user = await userData(path.id)
 
-      setData(user[0])
+      setData(user[0]);
     }
     fetchData()
   }
 
     , [path.id])
   return (
+    <Suspense fallback={<div>Loading...</div>}>
     < div className="flex w-screen ">
     <div className="flex flex-col justify-center items-center w-1/5 pl-8">
     <div className="flex flex-col  rounded-2xl mt-10 p-4 gap-4  border border-black shadow-md shadow-black text-slate-900 font-sans hover:scale-105 items-center mb-6">
 
 
       <h1 className=" text-2xl">{data.username}</h1>
-      <Image height="300" className=" rounded-2xl"  width="400" src={data.image} alt={`${data.username} image`}/>
+      <Image height="300" className=" rounded-2xl w-44 h-48"  width="400" src={data.image} alt={`${data.username} image`}/>
       <h1 className="self-start text-xl" >Age: {data.age}</h1>
       <h1 className=" self-start text-xl">Email: {data.email}</h1>
       <h1 className="text-xl self-start">Posts: {data.posts.length}</h1>
@@ -65,5 +66,6 @@ export default function Page() {
     </div>
         </div>
     </div>
+    </Suspense>
   )
 }

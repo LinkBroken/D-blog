@@ -2,7 +2,7 @@
 "use client"
 import { useParams, usePathname } from "next/navigation";
 import postData from "@/app/actions/postData";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import userData from "@/app/actions/userData";
 import Image from "next/image";
 export default function Page() {
@@ -31,6 +31,7 @@ export default function Page() {
           // console.log(post[0].user)
           setUserName(post[0].user.username);
           setUserImage(post[0].user.image)
+
           // console.log(post)
         })()
         : null
@@ -41,6 +42,7 @@ export default function Page() {
 
     , [path.id])
   return (
+    <Suspense fallback={<div>Loading...</div>}>
     <div className="flex flex-col overflow-x-hidden ">
     <div className="flex flex-col ml-12 ">
     <h1 className="text-xl self-center p-1 mt-4 text-center">Author</h1>
@@ -68,5 +70,6 @@ export default function Page() {
 
       </div>
     </div>
+    </Suspense>
   )
 }

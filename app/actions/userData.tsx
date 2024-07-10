@@ -1,4 +1,5 @@
 "use server"
+import { revalidatePath } from "next/cache";
 import postData from "./postData";
 import { PrismaClient } from "@prisma/client";
 

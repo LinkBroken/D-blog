@@ -1,4 +1,6 @@
 "use client";
+import { Textarea } from "@/components/ui/textarea"
+import { Input } from "@/components/ui/input";
 function Form({ action }) {
   return (
     <>
@@ -11,7 +13,7 @@ function Form({ action }) {
             <div className="flex w-full justify-evenly">
               <div className="flex flex-col gap-3 items-center w-3/4">
                 <label htmlFor="username">User Name</label>
-                <input
+                <Input
                   className="text-black border text-xl border-solid focus:border-none w-3/4 border-black rounded-md text-center"
                   type="text"
                   name="username"
@@ -20,8 +22,8 @@ function Form({ action }) {
               </div>
               <div className="flex flex-col gap-3 items-center w-3/4">
                 <label htmlFor="age">Age</label>
-                <input
-                  className="text-black border text-xl border-solid w-1/6 border-black rounded-md text-center"
+                <Input
+                  className="text-black border text-xl border-solid w-1/3 border-black rounded-md text-center"
                   type="number"
                   name="age"
                   required
@@ -31,7 +33,7 @@ function Form({ action }) {
             <div className="flex w-full justify-evenly">
               <div className="flex flex-col gap-3 items-center  w-3/4">
                 <label htmlFor="image">Insert Image Link</label>
-                <input
+                <Input
                   className="text-black border border-solid text-xl w-3/4 border-black rounded-md text-center"
                   type="text"
                   name="image"
@@ -40,7 +42,7 @@ function Form({ action }) {
               </div>
               <div className="flex flex-col gap-3 items-center w-3/4">
                 <label htmlFor="email">Email</label>
-                <input
+                <Input
                   className="text-black border text-xl border-solid border-black rounded-md text-center w-3/4"
                   type="text"
                   name="email"
@@ -53,7 +55,7 @@ function Form({ action }) {
             <label htmlFor="header" className="text-xl">
               Title
             </label>
-            <input
+            <Input
               className="text-black border border-solid text-xl border-black rounded-md text-center w-3/4"
               name="header"
               required
@@ -63,7 +65,7 @@ function Form({ action }) {
             <label htmlFor="post" className="text-xl">
               Post
             </label>
-            <textarea
+            <Textarea
               className="text-black border border-solid text-xl border-black rounded-2xl text-center w-full h-64"
               name="posts"
               required

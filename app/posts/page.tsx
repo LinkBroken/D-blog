@@ -1,9 +1,11 @@
 import { PrismaClient } from "@prisma/client";
 import Userdata from "../components/postData";
 import Image from "next/image";
+import { revalidatePath } from "next/cache";
 export default async function posts() {
   const prisma = new PrismaClient()
   const usersInfo = await prisma.post.findMany()
+  revalidatePath("/posts")
 
   
   return (

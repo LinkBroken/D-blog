@@ -1,8 +1,6 @@
 "use client"
 
 import Image from "next/image"
-import navigate from "../actions/navigate"
-import removeUser from "../actions/userRemoval"
 import Button from "./Button"
 import navigateUser from "../actions/navigateUsers"
 
@@ -17,7 +15,7 @@ function Userdata({ usersInfo }: Prop) {
                 <div className=" flex flex-col  gap-4 justify-evenly items-center p-8 w-1/3 border border-black shadow-md shadow-black  hover:bg-zinc-50   hover:scale-105 rounded-2xl" key={index}>
 
                     <h1 className=" text-xl ">{user.username}</h1>
-                    <Image src={user.image} alt="userimage" className=" rounded-lg" width={600} height={500} />
+                    <Image src={user.image} alt="userimage" className=" rounded-lg w-2/3 h-32" width={600} height={500} />
                     <Button className=" rounded-xl border border-black p-3 text-xl self-start shadow-md shadow-black" onClick={() => navigateUser(user.id)}>About</Button>
 
 

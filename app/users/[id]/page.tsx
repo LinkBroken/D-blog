@@ -50,7 +50,7 @@ export default function Page() {
     {data.posts.map((post, index) =>
          (
           <div
-            className="flex border border-solid flex-col gap-4 items-center p-7 w-1/4 hover:scale-105 hover:bg-slate-100 rounded-2xl bg-white shadow-lg shadow-black mb-4"
+            className="flex border border-solid flex-col gap-4 items-center p-7 w-1/4 hover:rotate-2 hover:bg-slate-100 rounded-2xl bg-white shadow-lg shadow-black mb-4"
             key={index}
           >
             <h1>{post.content.substring(0, 200)} .....</h1>

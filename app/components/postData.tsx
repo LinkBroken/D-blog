@@ -15,7 +15,7 @@ function Userdata({ usersInfo }: Prop) {
       {usersInfo.map((post, index) =>
         post.id ? (
           <Card
-            className="flex border border-solid flex-col gap-4 items-center p-7 w-1/4 hover:-rotate-1 hover:scale-105 hover:bg-slate-100 rounded-2xl bg-white shadow-lg shadow-black"
+            className="flex border border-solid flex-col gap-4 items-center p-7 w-1/4 hover:-rotate-1  rounded-2xl bg-white shadow-lg shadow-black hover:border-green-400 "
             key={index}
           >
             <CardContent>{post.content.substring(0, 200)} .....</CardContent>

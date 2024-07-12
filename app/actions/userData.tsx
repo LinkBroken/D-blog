@@ -17,3 +17,9 @@ export default async function userData(route:string){
     return await data
 }
 
+
+// Checkout for the whole cart, for the total price
+// Ability to adjust quantity on the cart page
+// Reciept for the cart page
+
+

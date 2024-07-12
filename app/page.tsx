@@ -5,7 +5,6 @@ import Link from "next/link";
 import { PrismaClient } from "@prisma/client";
 import Userdata from "./components/postData";
 import { Button } from "@/components/ui/button";
-
 export default async function Home() {
   // const [post, setPost] = useState(false)
   const prisma = new PrismaClient();
@@ -21,7 +20,8 @@ export default async function Home() {
       ],
     },
   });
-
+  const json = await fetch('http://localhost:3000/api/hello');
+  console.log(json)
   return (
     <>
       <div className="flex flex-col gap-8 p-8">

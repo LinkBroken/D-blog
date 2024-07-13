@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Button from "./Button";
-import navigateUser from "../actions/navigateUsers";
+import navigate from "../actions/navigate";
 
 type Prop = {
   usersInfo: {
@@ -33,7 +33,7 @@ function Userdata({ usersInfo }: Prop) {
             />
             <Button
               className=" rounded-xl border border-black p-3 text-xl self-start shadow-md shadow-black"
-              onClick={() => navigateUser(user.id)}
+              onClick={() => navigate("users",user.id)}
             >
               About
             </Button>

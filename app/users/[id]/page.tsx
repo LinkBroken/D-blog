@@ -56,7 +56,7 @@ export default function Page() {
                 <h1>{post?.content?.substring(0, 200)} .....</h1>
                 <Button
                   className=" self-end p-2 rounded-xl border border-black"
-                  onClick={() => navigate(post.id)}
+                  onClick={() => navigate("posts",post?.id)}
                 >
                   Read More
                 </Button>

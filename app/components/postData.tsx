@@ -21,7 +21,7 @@ function Userdata({ usersInfo }: Prop) {
             <Button
               variant={"secondary"}
               className=" self-end p-2 rounded-xl border border-black"
-              onClick={() => navigate(post.id)}
+              onClick={() => navigate("posts",post.id)}
             >
               Read More
             </Button>

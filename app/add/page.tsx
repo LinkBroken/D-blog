@@ -5,7 +5,7 @@ import primsa from "../api/_base";
 export default function AddPost() {
     async function addInfo(formData) {
         "use server";
-
+        
         const username = formData.get("username");
         const age = parseInt(formData.get("age"));
         const email = formData.get("email");
@@ -13,7 +13,7 @@ export default function AddPost() {
         const image = formData.get("image");
         const header = formData.get("header");
 
-
+        
        try{ await primsa.user.create({
             data: {
                 username,

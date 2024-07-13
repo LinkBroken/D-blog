@@ -1,8 +1,6 @@
-import { PrismaClient } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 import Form from "../components/Form";
-
-const prisma = new PrismaClient();
+import primsa from "../api/_base";
 
 export default function AddPost() {
     async function addInfo(formData) {
@@ -16,7 +14,7 @@ export default function AddPost() {
         const header = formData.get("header");
 
 
-       try{ await prisma.user.create({
+       try{ await primsa.user.create({
             data: {
                 username,
                 age,

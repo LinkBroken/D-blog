@@ -1,8 +1,6 @@
 "use server"
-import { PrismaClient } from "@prisma/client";
 import { revalidatePath } from "next/cache";
-
-const prisma = new PrismaClient()
+import prisma from "../api/_base"
 
 const removeUser = async (content:string) => {
   if (prisma) {

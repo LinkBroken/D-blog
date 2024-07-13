@@ -2,12 +2,11 @@
 import Image from "next/image";
 import home from "./assets/images/Homepage.png";
 import Link from "next/link";
-import { PrismaClient } from "@prisma/client";
+import prisma from "./api/_base";
 import Userdata from "./components/postData";
 import { Button } from "@/components/ui/button";
 export default async function Home() {
   // const [post, setPost] = useState(false)
-  const prisma = new PrismaClient();
   const posts = await prisma.post.findMany({
     where: {
       OR: [
@@ -66,6 +65,8 @@ export default async function Home() {
           <h1 className="text-3xl ">Mental Health</h1>
         </div>
       </div>
+      { posts&&
+      <>
       <div className="flex flex-col ml-4">
         <h1 className="text-3xl border-black border p-3 shadow-md shadow-black w-fit self-center ">
           Examples
@@ -78,6 +79,8 @@ export default async function Home() {
               <Link href="/add">Add a post</Link>
             </Button>
       </div>
+      </>
+      }
     </>
   );
 }

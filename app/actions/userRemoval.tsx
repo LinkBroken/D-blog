@@ -1,17 +1,15 @@
-"use server"
-import { PrismaClient } from "@prisma/client";
+"use server";
 import { revalidatePath } from "next/cache";
+import prisma from "../api/_base";
 
-const prisma = new PrismaClient()
+const removeUser = async (username: string) => {
+  await prisma.user.delete({
+    where: {
+      username: username,
+    },
+  });
 
-const removeUser = async (username:string) => {
-    await prisma.user.delete({
-      where: {
-        username:username
-      }
-    })
-  
-  revalidatePath("favorites")
-}
+  revalidatePath("favorites");
+};
 
-export default removeUser
+export default removeUser;

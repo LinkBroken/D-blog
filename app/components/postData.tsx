@@ -1,9 +1,8 @@
 "use client";
 
 import navigate from "../actions/navigate";
-import removeUser from "../actions/removeUser";
-import {Button} from "@/components/ui/button";
-import { Card,CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 
 type Prop = {
   usersInfo: { content: string; id: string }[];
@@ -20,7 +19,7 @@ function Userdata({ usersInfo }: Prop) {
           >
             <CardContent>{post.content.substring(0, 200)} .....</CardContent>
             <Button
-            variant={"secondary"}
+              variant={"secondary"}
               className=" self-end p-2 rounded-xl border border-black"
               onClick={() => navigate(post.id)}
             >

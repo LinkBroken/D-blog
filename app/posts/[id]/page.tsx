@@ -55,12 +55,12 @@ export default function Page() {
       <section className="flex w-screen mt-4  gap-8 flex-col items-center rounded-2xl">
         <h1 className="text-2xl p-4 border border-black shadow-lg shadow-black">Topic : {data.header} </h1>
         
-        <ul className=" list-disc flex flex-col items-center gap-2">
+        {/* <ul className=" list-disc flex flex-col items-center gap-2">
         <h1 className="text-2xl ">Prerequsites:</h1>
           <li>{data.content.substring(0, 11)}</li>
           <li>{data.content.substring(0, 11)}</li>
 
-        </ul>
+        </ul> */}
       </section>
 
       <div className="flex flex-col rounded-2xl mt-10 p-4 gap-4 items-center mb-6">

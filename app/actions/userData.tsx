@@ -1,10 +1,9 @@
 "use server"
-import { revalidatePath } from "next/cache";
-import postData from "./postData";
-import { PrismaClient } from "@prisma/client";
+// import { revalidatePath } from "next/cache";
+// import postData from "./postData";
+import prisma from "../api/_base"
 
 export default async function userData(route:string){
-    const prisma = new PrismaClient();
     const data = prisma.user.findMany(
         {
             where: {

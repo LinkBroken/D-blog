@@ -1,10 +1,7 @@
 "use server"
+import prisma from "../api/_base"
 
-import { PrismaClient } from "@prisma/client";
-
-export default async function postData(route:string){
-    const prisma = new PrismaClient();
-    
+export default async function postData(route:string){    
     const data = prisma.post.findMany(
         {
             where: {

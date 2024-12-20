@@ -1,4 +1,3 @@
-import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 
 type label = { text: string; className: string };

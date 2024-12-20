@@ -1,7 +1,4 @@
-"use client";
-
 import Image from "next/image";
-import Button from "./Button";
 import navigate from "../actions/navigate";
 
 type Prop = {
@@ -10,11 +7,10 @@ type Prop = {
     email: string;
     image: string;
     id: string;
-    posts: [];
   }[];
 };
 
-function Userdata({ usersInfo }: Prop) {
+function Usersdata({ usersInfo }: Prop) {
   return (
     <div className=" grid grid-cols-2 gap-6  w-full text-wrap justify-around place-items-center pt-3 mt-8   text-slate-700 ">
       {usersInfo ? (
@@ -31,12 +27,16 @@ function Userdata({ usersInfo }: Prop) {
               width={600}
               height={500}
             />
-            <Button
-              className=" rounded-xl border border-black p-3 text-xl self-start shadow-md shadow-black"
-              onClick={() => navigate("users",user.id)}
+            <form
+              action={async () => {
+                "use server";
+                await navigate({ route: "users", id: user.id });
+              }}
             >
-              About
-            </Button>
+              <button className="p-4 rounded-sm bg-slate-400 hover:bg-slate-200">
+                Click
+              </button>
+            </form>
           </div>
         ))
       ) : (
@@ -46,4 +46,4 @@ function Userdata({ usersInfo }: Prop) {
   );
 }
 
-export default Userdata;
+export default Usersdata;

@@ -1,36 +1,37 @@
-// "use client"
 import Image from "next/image";
 import home from "./assets/images/Homepage.png";
 import Link from "next/link";
 import prisma from "./api/_base";
-import Userdata from "./components/postData";
+import Postdata from "./components/PostData";
 import { Button } from "@/components/ui/button";
 export default async function Home() {
-  // const [post, setPost] = useState(false)
-  const posts = await prisma.post.findMany({
-    where: {
-      OR: [
-        {
-          id: 1,
-        },
-        { id: 2 },
-        { id: 3 },
-        { id: 4 },
-      ],
-    },
-  });
-  const json = await fetch('http://localhost:3000/api/hello');
-  console.log(json)
+  let posts;
+  try {
+    posts = await prisma.post.findMany({
+      where: {
+        OR: [
+          {
+            id: 1,
+          },
+          { id: 2 },
+          { id: 3 },
+          { id: 4 },
+        ],
+      },
+    });
+  } catch (err) {
+    console.log(err);
+  }
+
   return (
     <>
       <div className="flex flex-col gap-8 p-8">
-        <div className="pt-8 flex justify-center gap-4 items-center">
-          <div className="flex flex-col gap-4 w-1/2">
-            <h1 className=" text-slate-700 text-2xl ">
+        <div className="pt-8 flex flex-col justify-center gap-4 items-center lg:flex-row">
+          <div className="flex flex-col gap-4 w-full items-center lg:w-1/2 lg:items-start">
+            <h1 className=" text-slate-700 text-2xl w-4/5 lg:w-1/2">
               Partnering With a Blogging Platform Provider
-              {/* <Button>Hello</Button> */}
             </h1>
-            <p className="w-3/4">
+            <p className="w-4/5">
               Preparing to procure managed services to support or enhance your
               blogging platform? You are not alone: 62% of organizations plan to
               outsource some or all of their IT functions in 2022, according to
@@ -38,7 +39,7 @@ export default async function Home() {
               requirements and consider the services you want from a managed
               blogging services provider (MBSP).
             </p>
-            <p className="w-3/4">
+            <p className="w-4/5 ">
               There are several basic considerations when choosing your service
               provider, including: the MBSP’s experience, the types of support
               and services they offer, and how their service level agreements
@@ -47,7 +48,10 @@ export default async function Home() {
               ensures that individuals can efficiently create blog posts and
               engage with different perspectives on D-Blog
             </p>
-            <Button className="w-1/6 shadow-md shadow-black" variant={"secondary"}>
+            <Button
+              className=" w-1/4 lg:w-1/6 shadow-md shadow-black"
+              variant={"secondary"}
+            >
               <Link href="/posts">Read More</Link>
             </Button>
           </div>
@@ -58,29 +62,26 @@ export default async function Home() {
         <h1 className="text-3xl border-black border p-3 shadow-md shadow-black ">
           Topics
         </h1>
-        <div className="flex w-full justify-evenly text-white bg-teal-400 p-6">
+        <div className="flex flex-wrap w-full justify-between p-1 text-slate-500 lg:justify-evenly  lg:p-6">
           <h1 className="text-3xl ">Tech</h1>
           <h1 className="text-3xl ">Fitness</h1>
           <h1 className="text-3xl ">Business</h1>
-          <h1 className="text-3xl ">Mental Health</h1>
+          <h1 className="self-center text-3xl lg:self-baseline ">
+            Mental Health
+          </h1>
         </div>
       </div>
-      { posts&&
-      <>
-      <div className="flex flex-col ml-4">
-        <h1 className="text-3xl border-black border p-3 shadow-md shadow-black w-fit self-center ">
-          Examples
-        </h1>
+      {posts && (
+        <>
+          <div className="flex flex-col items-center lg:items-start lg:ml-4 ">
+            <h1 className="text-3xl border-black border p-3 shadow-md shadow-black w-fit self-center ">
+              Examples
+            </h1>
 
-        {<Userdata usersInfo={posts}></Userdata>}
-      </div>
-      <div className="flex flex-col items-center">
-      <Button className="w-1/8 mb-10 shadow-md shadow-black" variant={"secondary"}>
-              <Link href="/add">Add a post</Link>
-            </Button>
-      </div>
-      </>
-      }
+            {<Postdata usersInfo={posts}></Postdata>}
+          </div>
+        </>
+      )}
     </>
   );
 }

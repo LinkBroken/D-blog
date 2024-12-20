@@ -1,10 +1,16 @@
-"use client"
+"use client";
 
-function Button({onClick,className,children}) {
-
+interface ButtonProps {
+  className: string;
+  children: React.ReactNode;
+  onClick?: () => void;
+}
+function Button({ onClick, className, children }: ButtonProps) {
   return (
-    <button className={className}  onClick={onClick}>{children}</button>
-  )
+    <button className={className} onClick={onClick}>
+      {children}
+    </button>
+  );
 }
 
-export default Button
+export default Button;

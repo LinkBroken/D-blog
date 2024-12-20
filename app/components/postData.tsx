@@ -1,37 +1,46 @@
-"use client";
-
 import navigate from "../actions/navigate";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardTitle } from "@/components/ui/card";
 
 type Prop = {
-  usersInfo: { content: string; id: string }[];
+  usersInfo: {
+    id: number | string;
+    header?: string;
+    content?: string;
+    userId?: number;
+  }[];
 };
 
-function Userdata({ usersInfo }: Prop) {
+function PostData({ usersInfo }: Prop) {
   return (
-    <div className="flex flex-wrap text-wrap gap-x-7 gap-y-40 mb-10   pt-8 mt-8 w-10/12 text-slate-800">
+    <section className="grid place-items-center place-content-center  text-wrap gap-x-7 gap-y-40 mb-10   pt-8 mt-8 w-10/12 text-slate-800 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
       {usersInfo.map((post, index) =>
         post.id ? (
           <Card
-            className="flex border border-solid flex-col gap-4 items-center p-7 w-1/4 hover:-rotate-1  rounded-2xl bg-white shadow-lg shadow-black hover:border-green-400 "
+            className="flex border border-solid flex-col gap-4 items-center p-3 lg:p-7 hover:-rotate-1  rounded-2xl bg-white shadow-lg shadow-black hover:border-green-400 w-4/5"
             key={index}
           >
-            <CardContent>{post.content.substring(0, 200)} .....</CardContent>
-            <Button
-              variant={"secondary"}
-              className=" self-end p-2 rounded-xl border border-black"
-              onClick={() => navigate("posts",post.id)}
+            <CardTitle className=" text-center">{post.header}</CardTitle>
+            <CardContent className="p-2">
+              {post.content?.substring(0, 200)} .....
+            </CardContent>
+
+            <form
+              action={async () => {
+                "use server";
+                await navigate({ route: "posts", id: String(post.id) });
+              }}
             >
-              Read More
-            </Button>
+              <button className=" self-end p-2 rounded-xl border border-black">
+                Read More
+              </button>
+            </form>
           </Card>
         ) : (
-          <h1 key={index}>No data available</h1>
+          <span key={index}>No data available</span>
         )
       )}
-    </div>
+    </section>
   );
 }
 
-export default Userdata;
+export default PostData;

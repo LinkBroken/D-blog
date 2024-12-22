@@ -1,18 +1,20 @@
 import Image from "next/image";
 import navigate from "../actions/navigate";
+import { Button } from "@/components/ui/button";
 
 type Prop = {
   usersInfo: {
     username: string;
     email: string;
     image: string;
-    id: string;
+    id: number;
+    age: number;
   }[];
 };
 
 function Usersdata({ usersInfo }: Prop) {
   return (
-    <div className=" grid grid-cols-3 gap-6  w-full text-wrap justify-around place-items-center pt-3 mt-8   text-slate-700 ">
+    <div className=" grid grid-cols-3 gap-6  w-full text-wrap justify-around place-items-center pt-3 mt-8 ml-32 md:ml-42  text-slate-700 ">
       {usersInfo ? (
         usersInfo.map((user, index) => (
           <div
@@ -30,12 +32,15 @@ function Usersdata({ usersInfo }: Prop) {
             <form
               action={async () => {
                 "use server";
-                await navigate({ route: "users", id: user.id });
+                await navigate({ route: "users", id: String(user.id)! });
               }}
             >
-              <button className=" p-4 rounded-lg  hover:bg-slate-200">
-                Info
-              </button>
+              <Button
+                variant="link"
+                className=" self-end p-2 rounded-xl border border-black"
+              >
+                Read More
+              </Button>
             </form>
           </div>
         ))

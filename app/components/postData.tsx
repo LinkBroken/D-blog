@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import navigate from "../actions/navigate";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 
@@ -30,9 +31,12 @@ function PostData({ usersInfo }: Prop) {
                 await navigate({ route: "posts", id: String(post.id) });
               }}
             >
-              <button className=" self-end p-2 rounded-xl border border-black">
+              <Button
+                variant="link"
+                className=" self-end p-2 rounded-xl border border-black"
+              >
                 Read More
-              </button>
+              </Button>
             </form>
           </Card>
         ) : (

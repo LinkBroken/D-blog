@@ -1,10 +1,29 @@
-import { Suspense } from "react";
 import userData from "@/app/actions/userData";
 import Image from "next/image";
-import navigate from "@/app/actions/navigate";
-import { Button } from "@/components/ui/button";
+import PostData from "@/app/components/PostData";
+import { Metadata } from "next";
+import prisma from "@/lib/prisma";
 
 export type ParamsType = { id: string };
+
+export async function generateMetadata(params: {
+  params: ParamsType;
+}): Promise<Metadata> {
+  const userInfo = await userData(params.params.id);
+  const { username } = userInfo[0];
+  return {
+    title: username,
+    description: `Articles written by ${username}`,
+  };
+}
+
+export async function generateStaticParams(): Promise<any> {
+  const usersInfo = await prisma?.user.findMany();
+  if (!usersInfo?.length) {
+    return null;
+  }
+  return usersInfo?.map((user) => ({ id: String(user.id) }));
+}
 
 export default async function Page(params: { params: ParamsType }) {
   const userId = params.params.id[0];
@@ -19,52 +38,41 @@ export default async function Page(params: { params: ParamsType }) {
   }))[0];
 
   return (
-      <div className="flex w-screen ">
-        <div className="flex flex-col justify-center items-center w-1/5 pl-8">
-          <div className="flex flex-col  rounded-2xl mt-10 p-4 gap-4  border border-black shadow-md shadow-black text-slate-900 font-sans hover:scale-105 items-center mb-6">
-            <h1 className=" text-2xl">{username}</h1>
-            <Image
-              height="300"
-              className=" rounded-2xl w-44 h-48"
-              width="400"
-              src={image}
-              alt={`${username} image`}
-            />
-            <h1 className="self-start text-xl">Age: {age}</h1>
-            <h1 className=" self-start text-xl">Email: {email}</h1>
+    <section className=" bg-neutral-100 flex flex-col ml-32 md:ml-42 ">
+      <div className="flex flex-col ">
+        <div className="grid grid-cols-8 ml-4 bg-white rounded-2xl mt-10 p-8 gap-4  border border-black shadow-black text-slate-900 font-sans items-center mb-6">
+          <Image
+            height="300"
+            width="400"
+            className=" w-auto h-32 rounded-full"
+            src={image}
+            alt={`${username} image`}
+          />
+          <div className=" flex flex-col gap-2 col-span-3">
+            <h1 className="self-start text-xl text-teal-700">
+              <b>{username}</b>
+            </h1>
+            <h1 className=" self-start text-xl">{email}</h1>
             <h1 className="text-xl self-start">Posts: {posts.length}</h1>
           </div>
         </div>
-        <div className=" flex flex-col items-center pt-4 gap-4 w-4/5 ">
-          <h1 className="text-2xl p-4 text-center border border-black shadow-md shadow-black w-fit self-center">
-            Posts by {username.split(" ")[0]}
-          </h1>
+      </div>
+      <div className=" flex flex-col items-center pt-4 gap-4 w-4/5 ">
+        <h1 className="text-2xl p-4 text-center border border-black shadow-md shadow-black w-fit self-center">
+          Posts by {username.split(" ")[0]}
+        </h1>
 
-          <div className=" flex pl-6">
-            {posts.map((post, index) => (
-              <div
-                className="flex border border-solid flex-col gap-4 items-center p-7 w-1/4 hover:rotate-2 hover:bg-slate-100 rounded-2xl bg-white shadow-lg shadow-black mb-4"
-                key={index}
-              >
-                <h1>{post?.content?.substring(0, 200)} .....</h1>
-                <form
-                  action={async () => {
-                    "use server";
-
-                    await navigate({ route: "posts", id: String(post.id) });
-                  }}
-                >
-                  <Button
-                    variant="link"
-                    className=" self-end p-2 rounded-xl border border-black"
-                  >
-                    Read More
-                  </Button>
-                </form>
-              </div>
-            ))}
-          </div>
+        <div className="ml-32 md:ml-42 w-screen bg-white flex p-8 place-content-center ">
+          <PostData
+            usersInfo={posts.map((post, index) => ({
+              id: post.id,
+              content: post?.content?.substring(0, 200),
+              header: post.header,
+              userId: post.userId,
+            }))}
+          />
         </div>
       </div>
+    </section>
   );
 }

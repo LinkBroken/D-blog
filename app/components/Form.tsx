@@ -1,8 +1,8 @@
 import { Input } from "@/components/ui/input";
 
-type label = { text: string; className: string };
+export type label = { text: string; className: string };
 
-type InputField = {
+export type InputField = {
   className: string;
   type: string;
   name: string;
@@ -10,27 +10,28 @@ type InputField = {
 };
 export type Field = {
   label?: label;
-  input: InputField[];
+  input: InputField;
 };
 interface FormProp {
   action?: string | ((formData: FormData) => void | Promise<void>);
   fields?: Field[];
+  className: string;
 }
 
-function Form({ action, fields }: FormProp) {
+function Form({ action, fields, className }: FormProp) {
   if (!fields?.length) {
     return null;
   }
 
   return (
     <>
-      <section className="flex flex-col items-center">
+      <section className={className}>
         <form
           action={action}
           className="flex flex-col mt-10 gap-1 w-1/3 ml-5 items-center bg-teal-900 text-white   rounded-xl "
         >
           {fields?.map((field, index) => {
-            const { className, name, type, required } = field.input[index];
+            const { className, name, type, required } = field.input;
             const { text, ...rest } = { ...field.label };
 
             return (

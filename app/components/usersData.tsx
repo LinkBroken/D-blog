@@ -12,7 +12,7 @@ type Prop = {
   }[];
 };
 
-function Usersdata({ usersInfo }: Prop) {
+function UsersData({ usersInfo }: Prop) {
   return (
     <div className=" grid grid-cols-3 gap-6  w-full text-wrap justify-around place-items-center pt-3 mt-8 ml-32 md:ml-42  text-slate-700 ">
       {usersInfo ? (
@@ -51,4 +51,4 @@ function Usersdata({ usersInfo }: Prop) {
   );
 }
 
-export default Usersdata;
+export default UsersData;

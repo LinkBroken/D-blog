@@ -2,7 +2,7 @@ import Image from "next/image";
 import home from "./assets/images/Homepage.png";
 import Link from "next/link";
 import prisma from "./api/_base";
-import Postdata from "./components/postData";
+import Postdata from "./components/PostData";
 import { Button } from "@/components/ui/button";
 export default async function Home() {
   let posts;

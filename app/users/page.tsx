@@ -1,4 +1,4 @@
-import Usersdata from "../components/usersData";
+import Usersdata from "../components/UsersData";
 import { revalidatePath } from "next/cache";
 import prisma from "../api/_base";
 

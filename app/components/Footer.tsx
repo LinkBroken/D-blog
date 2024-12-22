@@ -1,16 +1,20 @@
-import { faCaravan as icon } from "@fortawesome/free-solid-svg-icons";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function Footer(){
-    return (
-        <>
-        
-        <div className="flex  flex-col gap-4 items-center relative mt-10 bottom-0 w-full">
-        <FontAwesomeIcon className="w-44" icon={icon}/>
+interface footerProps {
+  title?: string;
+  icon?: IconProp;
+  description?: string;
+}
 
-      <h2 className="text-2xl font-bold">D-Blog</h2>
-      <p className="text-sm mt-2">Your daily dose of insightful articles and updates.</p>
-        </div>
-        </>
-    )
+export default function Footer({ description, icon, title }: footerProps) {
+  return (
+    <>
+      <div className="flex justify-center text-white gap-4 p-8 bg-teal-700 items-center mt-10 bottom-0 w-full bg-inherit">
+        {title && <h2 className="text-2xl font-bold">{title}</h2>}
+        {icon && <FontAwesomeIcon className="w-44" icon={icon ?? undefined} />}
+        {description && <p className="text-sm mt-2">{description}</p>}
+      </div>
+    </>
+  );
 }

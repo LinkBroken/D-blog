@@ -45,13 +45,17 @@ export default function AddPost() {
 
   const inputFields = ["username", "age", "email", "content", "image"];
 
-  FieldArray = inputFields.map(
-    (field, index) =>
-      ({
-        label: { className: "", text: field },
-        input: [{ className: "", name: field, type: "text", required: true }],
-      } as Field)
-  );
+  FieldArray = inputFields.map((field, index) => ({
+    label: { className: "", text: field },
+    input: { className: "p-4", name: field, type: "text", required: true },
+  }));
 
-  return <Form fields={FieldArray} action={addInfo} />;
+  return (
+    <Form
+      className="flex flex-col"
+      key={Math.random()}
+      fields={FieldArray}
+      action={addInfo}
+    />
+  );
 }

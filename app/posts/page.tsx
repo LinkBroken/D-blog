@@ -2,7 +2,7 @@ import { revalidatePath } from "next/cache";
 import Image from "next/image";
 
 import prisma from "@/app/api/_base";
-import PostData from "../components/PostData";
+import PostData from "../components/postData";
 
 export default async function posts() {
   const usersInfo = await prisma.post.findMany();

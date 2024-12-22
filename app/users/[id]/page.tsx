@@ -1,6 +1,6 @@
 import userData from "@/app/actions/userData";
 import Image from "next/image";
-import PostData from "@/app/components/PostData";
+import PostData from "@/app/components/postData";
 import { Metadata } from "next";
 import prisma from "@/lib/prisma";
 

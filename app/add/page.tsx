@@ -1,5 +1,5 @@
 import { revalidatePath } from "next/cache";
-import Form, { Field } from "../components/Form";
+import Form from "../components/Form";
 import primsa from "../api/_base";
 
 interface Form {

@@ -12,11 +12,11 @@ type Prop = {
 
 function Usersdata({ usersInfo }: Prop) {
   return (
-    <div className=" grid grid-cols-2 gap-6  w-full text-wrap justify-around place-items-center pt-3 mt-8   text-slate-700 ">
+    <div className=" grid grid-cols-3 gap-6  w-full text-wrap justify-around place-items-center pt-3 mt-8   text-slate-700 ">
       {usersInfo ? (
         usersInfo.map((user, index) => (
           <div
-            className=" flex flex-col  gap-4 justify-evenly items-center p-8 w-1/3 border border-black shadow-md shadow-black  hover:bg-zinc-50   hover:scale-x-105 rounded-2xl hover:-rotate-3 hover:border-green-400"
+            className=" flex flex-col  gap-4 justify-evenly items-center p-8 w-1/2 border border-black shadow-md shadow-black  hover:bg-zinc-50   hover:scale-z-125 rounded-2xl  hover:border-green-400"
             key={index}
           >
             <h1 className=" text-xl ">{user.username}</h1>
@@ -33,8 +33,8 @@ function Usersdata({ usersInfo }: Prop) {
                 await navigate({ route: "users", id: user.id });
               }}
             >
-              <button className="p-4 rounded-sm bg-slate-400 hover:bg-slate-200">
-                Click
+              <button className=" p-4 rounded-lg  hover:bg-slate-200">
+                Info
               </button>
             </form>
           </div>

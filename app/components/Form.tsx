@@ -8,7 +8,7 @@ type InputField = {
   name: string;
   required?: true | false;
 };
-type Field = {
+export type Field = {
   label?: label;
   input: InputField[];
 };

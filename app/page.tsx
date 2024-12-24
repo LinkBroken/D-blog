@@ -24,7 +24,7 @@ export default async function Home() {
   }
 
   return (
-    <main className="ml-32 md:ml-42 ">
+    <main className="">
       <div className="flex flex-col gap-8 p-8">
         <div className="pt-8 flex flex-col justify-center gap-4 items-center lg:flex-row">
           <div className="flex flex-col gap-4 w-full items-center lg:w-1/2 lg:items-start">
@@ -73,7 +73,7 @@ export default async function Home() {
       </div>
       {posts && (
         <>
-          <div className="flex flex-col items-center lg:items-start lg:ml-4 ">
+          <div className="flex flex-col items-center lg:items-start ">
             <h1 className="text-3xl border-black border p-3 shadow-md shadow-black w-fit self-center ">
               Examples
             </h1>

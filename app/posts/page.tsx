@@ -9,8 +9,8 @@ export default async function posts() {
   revalidatePath("/posts");
 
   return (
-    <section className=" bg-teals-50 overflow-hidden flex justify-around flex-col  items-center pt-8   ml-32 md:ml-42 ">
-      <div className=" relative overflow-hidden flex justify-evenly items-center gap-3 xl:right-1/4  ">
+    <section className=" bg-teals-50 overflow-hidden flex justify-around flex-col  items-center pt-8 ">
+      <div className=" relative flex justify-evenly items-center gap-3 xl:right-1/4  ">
         <Image
           className=" w-4/5 rounded-2xl xl:w-full"
           width={500}

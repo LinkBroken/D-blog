@@ -38,7 +38,7 @@ export default async function Page(params: { params: ParamsType }) {
   }))[0];
 
   return (
-    <section className=" bg-neutral-100 flex flex-col ml-32 md:ml-42 ">
+    <section className=" bg-neutral-100 flex flex-col  ">
       <div className="flex flex-col ">
         <div className="grid grid-cols-8 ml-4 bg-white rounded-2xl mt-10 p-8 gap-4  border border-black shadow-black text-slate-900 font-sans items-center mb-6">
           <Image

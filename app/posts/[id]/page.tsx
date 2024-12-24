@@ -39,7 +39,7 @@ export default async function Page(params: { params: { id: string } }) {
 
   return (
     <section className="flex flex-col overflow-x-hidden ">
-      <div className="flex flex-col ml-12 ">
+      <div className="flex flex-col  ">
         <h1 className="text-xl self-center p-1 mt-4 text-center">Author</h1>
         <div className="flex flex-col self-center items-center p-1 mt-4 mr-6 rounded-full border border-black w-1/12">
           <Image
@@ -60,7 +60,7 @@ export default async function Page(params: { params: { id: string } }) {
       </section>
 
       <div className="flex flex-col rounded-2xl mt-10 p-4 gap-4 items-center mb-6">
-        <p className="text-xl w-2/3 tracking-widest break-words ">
+        <p className="text-xl  md:w-2/3 tracking-widest break-words ">
           Content: {content}
         </p>
       </div>

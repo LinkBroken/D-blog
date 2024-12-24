@@ -7,7 +7,7 @@ export default async function users() {
   revalidatePath("/users");
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col grow items-center">
       <Usersdata usersInfo={usersInfo} />
     </div>
   );

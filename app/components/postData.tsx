@@ -17,7 +17,7 @@ function PostData({ usersInfo }: Prop) {
       {usersInfo.map((post, index) =>
         post.id ? (
           <Card
-            className="flex border border-solid flex-col gap-4 items-center p-3 lg:p-7 hover:-rotate-1  rounded-2xl bg-white shadow-lg shadow-black hover:border-green-400 w-4/5"
+            className="flex border border-solid flex-col gap-4 items-center p-3 lg:p-7 hover:-rotate-1  rounded-2xl bg-white  hover:border-green-400 w-4/5"
             key={index}
           >
             <CardTitle className=" text-center">{post.header}</CardTitle>

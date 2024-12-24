@@ -46,8 +46,8 @@ export default function AddPost() {
   const inputFields = ["username", "age", "email", "content", "image"];
 
   FieldArray = inputFields.map((field, index) => ({
-    label: { className: "", text: field },
-    input: { className: "p-4", name: field, type: "text", required: true },
+    label: { className: " p-4", text: field },
+    input: { className: "p-4 border-black solid flex flex-", name: field, type: "text", required: true },
   }));
 
   return (

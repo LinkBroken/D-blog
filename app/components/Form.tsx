@@ -28,7 +28,7 @@ function Form({ action, fields, className }: FormProp) {
       <section className={className}>
         <form
           action={action}
-          className="flex flex-col mt-10 gap-1 w-1/3 ml-5 items-center bg-teal-900 text-white   rounded-xl "
+          className="flex flex-col mt-10 gap-1 p-32 grow  items-center bg-teal-900 text-white   rounded-xl "
         >
           {fields?.map((field, index) => {
             const { className, name, type, required } = field.input;

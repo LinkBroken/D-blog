@@ -19,15 +19,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Navbar />
+        <div className="flex flex-col-reverse shrink-0   min-h-screen w-full md:flex-row ">
+          <Navbar />
 
-        {children}
-        <Footer
-          description="Your daily dose of insightful articles"
-          key={Math.random()}
-          icon={icon}
-          title="D-blog"
-        />
+          {children}
+        </div>
       </body>
     </html>
   );

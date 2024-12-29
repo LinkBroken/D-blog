@@ -2,11 +2,11 @@
 import { revalidatePath } from "next/cache";
 import prisma from "../api/_base";
 
-const removeUser = async (content: string) => {
+const removeUser = async (id: number) => {
   if (prisma) {
     await prisma.post.delete({
       where: {
-        content: content,
+        id: id,
       },
     });
   }

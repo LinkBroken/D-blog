@@ -6,19 +6,11 @@ import Postdata from "./components/postData";
 import { Button } from "@/components/ui/button";
 export default async function Home() {
   let posts;
+
   try {
-    posts = await prisma.post.findMany({
-      where: {
-        OR: [
-          {
-            id: 1,
-          },
-          { id: 2 },
-          { id: 3 },
-          { id: 4 },
-        ],
-      },
-    });
+    posts = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/posts`, {
+      cache: "force-cache",
+    }).then((res) => res.json());
   } catch (err) {
     console.log(err);
   }

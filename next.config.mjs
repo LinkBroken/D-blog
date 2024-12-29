@@ -3,10 +3,14 @@ const nextConfig = {
     images: {
       remotePatterns: [
         {
-          hostname: 'upload.wikimedia.org',
+          hostname: 'marketing4ecommerce.net',
+
         },
         {
-          hostname: 'www.pixibitdesign.com',
+          hostname:"www.pixibitdesign.com"
+        },
+        {
+          hostname: 'i.dailymail.co.uk',
         },
         {
           protocol: 'https',

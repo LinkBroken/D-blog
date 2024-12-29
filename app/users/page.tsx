@@ -1,9 +1,14 @@
-import Usersdata from "../components/usersData";
+import Usersdata from "../components/UsersData";
 import { revalidatePath } from "next/cache";
 import prisma from "../api/_base";
 
 export default async function users() {
-  const usersInfo = await prisma?.user.findMany();
+  const usersInfo = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/users`,
+    {
+      cache: "force-cache",
+    }
+  ).then((res) => res.json());
   revalidatePath("/users");
 
   return (

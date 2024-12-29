@@ -8,18 +8,20 @@ datasource db {
 }
 
 model User {
-  id       Int    @id @default(autoincrement())
-  username String @unique
+  id       Int      @id @default(autoincrement())
+  username String   @unique
   age      Int
-  image    String @unique
-  email    String @unique
-  posts    Post[] 
+  image    String   
+  email    String   @unique
+  posts    Post[]
 }
 
 model Post {
   id       Int    @id @default(autoincrement())
-  header String @unique
-  content  String @unique
+  header   String 
+  content  String 
+  dateAdded String
   userId   Int
+  image String
   user     User   @relation(fields: [userId], references: [id])
 }

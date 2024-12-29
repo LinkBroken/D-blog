@@ -13,6 +13,7 @@ export async function generateStaticParams(): Promise<any> {
   return postsInfo?.map((post) => ({ id: String(post.id) }));
 }
 
+
 export const generateMetadata = async (params: {
   params: ParamsType;
 }): Promise<Metadata> => {
@@ -20,7 +21,7 @@ export const generateMetadata = async (params: {
   const post = await postData(id);
   const header = post?.map((data) => data.header)[0];
 
-  if (!header.length) {
+  if (!header?.length) {
     return { title: "post with no header" };
   }
   return { title: header };
@@ -30,23 +31,24 @@ export default async function Page(params: { params: { id: string } }) {
   const postId = params.params.id[0];
   const post = await postData(postId);
 
-  const { userImage, content, header, userName } = post.map((data) => ({
+  const { avatar, content, title, userName, image } = post.map((data) => ({
+    title: data.header,
     content: data.content,
-    userImage: data.user.image,
+    image: data.image,
+    avatar: data.user.image,
     userName: data.user.username,
-    header: data.header,
   }))[0];
 
   return (
-    <section className="flex flex-col overflow-x-hidden ">
-      <div className="flex flex-col  ">
+    <section className="flex flex-col items-center ">
+      <div className="flex flex-col items-center ">
         <h1 className="text-xl self-center p-1 mt-4 text-center">Author</h1>
         <div className="flex flex-col self-center items-center p-1 mt-4 mr-6 rounded-full border border-black w-1/12">
           <Image
             className="rounded-full"
             width={300}
             height={300}
-            src={userImage}
+            src={avatar}
             alt="alt text"
           ></Image>
         </div>
@@ -55,8 +57,9 @@ export default async function Page(params: { params: { id: string } }) {
       </div>
       <section className="flex w-screen mt-4  gap-8 flex-col items-center rounded-2xl">
         <h1 className="text-2xl p-4 border border-black shadow-lg shadow-black">
-          Topic : {header}
+          Topic : {title}
         </h1>
+        <Image width={1216} height={768} src={image} alt={`${userName} blog post with the title ${title}`}/>
       </section>
 
       <div className="flex flex-col rounded-2xl mt-10 p-4 gap-4 items-center mb-6">
